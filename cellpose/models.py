@@ -433,12 +433,9 @@ class CellposeModel(UnetModel):
                         stylized = transforms.resize_image(stylized, shape[1], shape[2])
                         all_y[ii][j].append(y_tmp)
                         all_stylized[ii][j].append(stylized)
-            print('aaaa',len(all_stylized))
-            for alls in all_stylized:
-                print('bbbb',len(alls))
             #Calculating the rotational consistancy of Style + Scale combinations
             dices_total = []
-            for ii, style_rot in enumerate(all_stylized):
+            for ii, style_rot in enumerate(all_y):
                 dices_total.append([])
                 for j,stylez in enumerate(style_rot):
                     #calculate rotational consistency across inference results at different rotated angles
