@@ -421,18 +421,18 @@ class CellposeModel(UnetModel):
                         #rotation de-augmentations
                         if k==1: 
                             y_tmp = cv2.rotate(y_tmp, cv2.ROTATE_90_COUNTERCLOCKWISE)
-                            stylized = cv2.rotate(stylized, cv2.ROTATE_90_COUNTERCLOCKWISE)
+                            #stylized = cv2.rotate(stylized, cv2.ROTATE_90_COUNTERCLOCKWISE)
                         if k==2: 
                             y_tmp = cv2.rotate(y_tmp, cv2.ROTATE_180)
-                            stylized = cv2.rotate(stylized, cv2.ROTATE_180)
-                        if k==3: 
-                            y_tmp = cv2.rotate(y_tmp, cv2.ROTATE_90_CLOCKWISE)
-                            stylized = cv2.rotate(stylized, cv2.ROTATE_90_CLOCKWISE)
+                            #stylized = cv2.rotate(stylized, cv2.ROTATE_180)
+                        #if k==3: 
+                        #    y_tmp = cv2.rotate(y_tmp, cv2.ROTATE_90_CLOCKWISE)
+                            #stylized = cv2.rotate(stylized, cv2.ROTATE_90_CLOCKWISE)
                             
                         y_tmp = transforms.resize_image(y_tmp, shape[1], shape[2]) # rsz=None, ly lx = 288, 512 
-                        stylized = transforms.resize_image(stylized, shape[1], shape[2])
+                        #stylized = transforms.resize_image(stylized, shape[1], shape[2])
                         all_y[ii][j].append(y_tmp)
-                        all_stylized[ii][j].append(stylized)
+                        #all_stylized[ii][j].append(stylized)
             #Calculating the rotational consistancy of Style + Scale combinations
             dices_total = []
             for ii, style_rot in enumerate(all_y):
