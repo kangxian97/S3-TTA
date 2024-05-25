@@ -445,7 +445,7 @@ class CellposeModel(UnetModel):
             
         
             best_scale, best_style = s3_tta.find_best_aug_index(dices_total)
-            print('Scale selection: ', scales[best_scale], 'Style selction (index):', best_style)
+            print('Scale selection: ', scaless[best_scale], 'Style selction (index):', best_style)
             yf = all_y[best_scale][best_style][0]
             cellprob[i] = yf[:,:,2]
             dP[:, i] = yf[:,:,:2].transpose((2,0,1)) 
