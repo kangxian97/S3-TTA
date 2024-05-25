@@ -425,8 +425,8 @@ class CellposeModel(UnetModel):
                         if k==2: 
                             y_tmp = cv2.rotate(y_tmp, cv2.ROTATE_180)
                             #stylized = cv2.rotate(stylized, cv2.ROTATE_180)
-                        #if k==3: 
-                        #    y_tmp = cv2.rotate(y_tmp, cv2.ROTATE_90_CLOCKWISE)
+                        if k==3: 
+                            y_tmp = cv2.rotate(y_tmp, cv2.ROTATE_90_CLOCKWISE)
                             #stylized = cv2.rotate(stylized, cv2.ROTATE_90_CLOCKWISE)
                             
                         y_tmp = transforms.resize_image(y_tmp, shape[1], shape[2]) # rsz=None, ly lx = 288, 512 

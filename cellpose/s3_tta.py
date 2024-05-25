@@ -13,7 +13,7 @@ models_logger = logging.getLogger(__name__)
 
 def rotational_consistency_pair_wise(input_list):
         lens = len(input_list)
-        flatten = [(i>0).flatten() for i in input_list]
+        flatten = [(i[:,:,2]>0).flatten() for i in input_list]
         dices = []
         for i in range(lens):
             j=i+1
@@ -75,7 +75,7 @@ def rotation_augmentation(imgs):
     for idx, s in enumerate(imgs):
         s.append(cv2.rotate(s[0], cv2.ROTATE_90_CLOCKWISE))
         s.append(cv2.rotate(s[0], cv2.ROTATE_180))
-        #s.append(cv2.rotate(s[0], cv2.ROTATE_90_COUNTERCLOCKWISE))
+        s.append(cv2.rotate(s[0], cv2.ROTATE_90_COUNTERCLOCKWISE))
     return imgs
 
 def find_best_aug_index(dice_scores):
